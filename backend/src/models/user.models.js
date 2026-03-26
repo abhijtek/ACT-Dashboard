@@ -95,8 +95,7 @@ userSchema.methods.isPasswordCorrect = async function(password){
 // JWT token 
 // hEADER, Pyload ,  signature
 userSchema.methods.generateAccessToken = function(){
-    return jwt.sign(
-        {
+    return jwt.sign({
             _id : this._id,
             email : this.email,
             username : this.username,
