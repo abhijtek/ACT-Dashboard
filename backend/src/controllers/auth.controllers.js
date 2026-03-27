@@ -168,6 +168,36 @@ const getCurrentUser = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, req.user, "Current User Fetched Successfully"));
 });
+
+const getUserData = asyncHandler(async (req, res) => {
+  const displayName = req.user?.username || req.user?.email || "User";
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        user: {
+          name: displayName,
+        },
+        leads: [
+          { id: 1, title: "Lead A", status: "new" },
+          { id: 2, title: "Lead B", status: "contacted" },
+        ],
+        tasks: [
+          { id: 1, title: "Follow up with Lead A", done: false },
+          { id: 2, title: "Prepare weekly report", done: true },
+        ],
+        users: [
+          { id: 1, name: "Alex" },
+          { id: 2, name: "Sam" },
+          { id: 3, name: "Jordan" },
+        ],
+      },
+      "Dummy dashboard data fetched successfully",
+    ),
+  );
+});
+
 const verifyEmail = asyncHandler(async (req, res) => {
   const { verificationToken } = req.params;
   if (!verificationToken) {
@@ -361,6 +391,7 @@ export {
   login,
   logoutUser,
   getCurrentUser,
+  getUserData,
   verifyEmail,
   resendEmailVerification,
   refreshAccessToken,

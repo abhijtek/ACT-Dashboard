@@ -3,6 +3,7 @@ import {
   changeCurrentPassword,
   forgotPasswordRequest,
   getCurrentUser,
+  getUserData,
   login,
   logoutUser,
   refreshAccessToken,
@@ -51,7 +52,7 @@ router
   .route("/resend-email-verification")
   .post(verifyJWT, resendEmailVerification);
 router.route("/logout").post(verifyJWT, logoutUser);
-
+router.route("/data").get(verifyJWT, getUserData);
 export default router;
 
 // Login feature
