@@ -9,6 +9,17 @@ import {
   sendEmail,
 } from "../utils/mail.js";
 import jwt, { decode } from "jsonwebtoken";
+
+const getCookieOptions = () => {
+  const isProduction = process.env.NODE_ENV === "production";
+
+  return {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+  };
+};
+
 const generateAccessAndRefreshToken = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -110,10 +121,7 @@ const login = asyncHandler(async (req, res) => {
   // setting user cookies
   // cookies require options
 
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
+  const options = getCookieOptions();
 
   return res
     .status(200)
@@ -152,10 +160,8 @@ const logoutUser = asyncHandler(async (req, res) => {
       new: true, // once done  give me most newer obj
     },
   );
-  const options = {
-    httpOnly: true,
-    secure: true,
-  };
+  const options = getCookieOptions();
+
   return res
     .status(200)
     .clearCookie("accessToken", options)
@@ -282,10 +288,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
       throw new ApiError(401, "Refresh Token Expired");
     }
 
-    const options = {
-      httpOnly: true,
-      secure: true,
-    };
+    const options = getCookieOptions();
 
     const { accessToken, refreshToken: newRefreshToken } =
       generateAccessAndRefreshToken(user._id);

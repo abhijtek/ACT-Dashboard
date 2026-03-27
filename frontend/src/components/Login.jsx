@@ -51,7 +51,7 @@ function Login() {
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
           Sign in
         </h1>
-        <p className="mt-2 text-sm text-slate-500">Use your account to enter the dashboard.</p>
+        <p className="mt-2 text-sm text-slate-500">Access your workspace and continue where you left off.</p>
       </div>
 
       {error ? <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p> : null}

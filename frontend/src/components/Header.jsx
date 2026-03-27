@@ -19,7 +19,7 @@ function Header() {
           <Logo width={52} />
           <div>
             <p className="text-base font-semibold text-slate-900">ACT Dashboard</p>
-            <p className="text-sm text-slate-500">Simple auth setup</p>
+            <p className="text-sm text-slate-500">Operations workspace</p>
           </div>
         </Link>
 

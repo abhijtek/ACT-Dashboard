@@ -56,7 +56,7 @@ function SignUp() {
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
           Create account
         </h1>
-        <p className="mt-2 text-sm text-slate-500">Register first, then we log you in automatically.</p>
+        <p className="mt-2 text-sm text-slate-500">Create your workspace account and get started in minutes.</p>
       </div>
 
       {error ? <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p> : null}

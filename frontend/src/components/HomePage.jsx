@@ -27,7 +27,7 @@ function HomePage() {
         Welcome, {userData?.username || userData?.email || "User"}
       </h1>
       <p className="mt-2 text-slate-600">
-        This home route is pulling the dummy data returned by your backend `user data` API.
+        Track pipeline activity, team tasks, and account performance from one place.
       </p>
 
       {error ? <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p> : null}
