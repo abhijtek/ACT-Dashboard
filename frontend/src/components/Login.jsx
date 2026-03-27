@@ -45,25 +45,25 @@ function Login() {
   }
 
   return (
-    <section className="page-card auth-card">
-      <div style={{ textAlign: "center" }}>
+    <section className="mx-auto w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+      <div className="text-center">
         <Logo width={90} />
-        <h1 className="page-title" style={{ marginTop: 16 }}>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
           Sign in
         </h1>
-        <p className="page-text">Use your account to enter the dashboard.</p>
+        <p className="mt-2 text-sm text-slate-500">Use your account to enter the dashboard.</p>
       </div>
 
-      {error ? <p className="form-error" style={{ marginTop: 16 }}>{error}</p> : null}
+      {error ? <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p> : null}
 
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="form-label" htmlFor="login-email">
+      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="login-email">
             Email
           </label>
           <input
             id="login-email"
-            className="form-input"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             type="email"
             name="email"
             placeholder="Enter your email"
@@ -73,13 +73,13 @@ function Login() {
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-label" htmlFor="login-password">
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="login-password">
             Password
           </label>
           <input
             id="login-password"
-            className="form-input"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             type="password"
             name="password"
             placeholder="Enter your password"
@@ -89,13 +89,16 @@ function Login() {
           />
         </div>
 
-        <Button type="submit" className="button--full" disabled={isSubmitting}>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? "Signing in..." : "Sign in"}
         </Button>
       </form>
 
-      <p className="auth-footer">
-        Do not have an account? <Link to="/signup" className="auth-link">Sign up</Link>
+      <p className="mt-4 text-sm text-slate-500">
+        Do not have an account?{" "}
+        <Link to="/signup" className="font-semibold text-blue-600 hover:text-blue-700">
+          Sign up
+        </Link>
       </p>
     </section>
   )

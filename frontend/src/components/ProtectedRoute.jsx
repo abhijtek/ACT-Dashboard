@@ -6,8 +6,8 @@ function ProtectedRoute({ children }) {
 
   if (!initialized) {
     return (
-      <section className="page-card">
-        <p className="page-text">Checking session...</p>
+      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p className="text-slate-600">Checking session...</p>
       </section>
     )
   }

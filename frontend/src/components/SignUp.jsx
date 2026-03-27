@@ -50,25 +50,25 @@ function SignUp() {
   }
 
   return (
-    <section className="page-card auth-card">
-      <div style={{ textAlign: "center" }}>
+    <section className="mx-auto w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+      <div className="text-center">
         <Logo width={90} />
-        <h1 className="page-title" style={{ marginTop: 16 }}>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
           Create account
         </h1>
-        <p className="page-text">Register first, then we log you in automatically.</p>
+        <p className="mt-2 text-sm text-slate-500">Register first, then we log you in automatically.</p>
       </div>
 
-      {error ? <p className="form-error" style={{ marginTop: 16 }}>{error}</p> : null}
+      {error ? <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p> : null}
 
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="form-label" htmlFor="signup-username">
+      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="signup-username">
             Username
           </label>
           <input
             id="signup-username"
-            className="form-input"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             type="text"
             name="username"
             placeholder="Enter username"
@@ -78,13 +78,13 @@ function SignUp() {
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-label" htmlFor="signup-email">
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="signup-email">
             Email
           </label>
           <input
             id="signup-email"
-            className="form-input"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             type="email"
             name="email"
             placeholder="Enter your email"
@@ -94,13 +94,13 @@ function SignUp() {
           />
         </div>
 
-        <div className="form-group">
-          <label className="form-label" htmlFor="signup-password">
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-slate-700" htmlFor="signup-password">
             Password
           </label>
           <input
             id="signup-password"
-            className="form-input"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
             type="password"
             name="password"
             placeholder="Enter your password"
@@ -110,13 +110,16 @@ function SignUp() {
           />
         </div>
 
-        <Button type="submit" className="button--full" disabled={isSubmitting}>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? "Creating account..." : "Create account"}
         </Button>
       </form>
 
-      <p className="auth-footer">
-        Already have an account? <Link to="/login" className="auth-link">Sign in</Link>
+      <p className="mt-4 text-sm text-slate-500">
+        Already have an account?{" "}
+        <Link to="/login" className="font-semibold text-blue-600 hover:text-blue-700">
+          Sign in
+        </Link>
       </p>
     </section>
   )
