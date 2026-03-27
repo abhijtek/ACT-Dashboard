@@ -61,7 +61,7 @@ function Login() {
       const userData = await authService.getCurrentUser()
       dispatch(authLogin({ userData }))
       navigate("/")
-    } catch (err) {
+    } catch {
       const message = "Invalid credentials"
       setError(message)
     } finally {
