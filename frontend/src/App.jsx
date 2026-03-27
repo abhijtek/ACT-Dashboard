@@ -10,22 +10,21 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const checkUser = async () => {
-      if (!authService.hasToken()) {
-        dispatch(authChecked())
-        return
-      }
-
-      try {
-        const userData = await authService.getCurrentUser()
-        dispatch(login({ userData }))
-      } catch (error) {
-        authService.clearSession()
+    authService
+      .getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }))
+        } else {
+          dispatch(logout())
+        }
+      })
+      .catch(() => {
         dispatch(logout())
-      }
-    }
-
-    checkUser()
+      })
+      .finally(() => {
+        dispatch(authChecked())
+      })
   }, [dispatch])
 
   return (

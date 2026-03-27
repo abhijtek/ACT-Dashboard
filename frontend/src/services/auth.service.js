@@ -1,4 +1,4 @@
-import api, { clearAccessToken, getAccessToken, setAccessToken } from "../api/api.js"
+import api from "../api/api.js"
 
 const getResponseData = (response) => response?.data?.data
 
@@ -8,13 +8,7 @@ const getErrorMessage = (error) =>
 const authService = {
   async login(credentials) {
     try {
-      const data = getResponseData(await api.post("/api/v1/auth/login", credentials))
-
-      if (data?.accessToken) {
-        setAccessToken(data.accessToken)
-      }
-
-      return data
+      return getResponseData(await api.post("/api/v1/auth/login", credentials))
     } catch (error) {
       throw new Error(getErrorMessage(error))
     }
@@ -38,21 +32,10 @@ const authService = {
 
   async logout() {
     try {
-      const data = getResponseData(await api.post("/api/v1/auth/logout"))
-      clearAccessToken()
-      return data
+      return getResponseData(await api.post("/api/v1/auth/logout"))
     } catch (error) {
-      clearAccessToken()
       throw new Error(getErrorMessage(error))
     }
-  },
-
-  clearSession() {
-    clearAccessToken()
-  },
-
-  hasToken() {
-    return Boolean(getAccessToken())
   },
 }
 

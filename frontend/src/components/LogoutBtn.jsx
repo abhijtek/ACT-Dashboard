@@ -15,9 +15,9 @@ function LogoutBtn() {
 
     try {
       await authService.logout()
-    } finally {
       dispatch(logout())
       navigate("/login")
+    } finally {
       setIsLoading(false)
     }
   }
