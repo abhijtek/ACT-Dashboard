@@ -26,7 +26,7 @@ function LogoutBtn() {
     <button
       type="button"
       onClick={logoutHandler}
-      className="inline-flex items-center justify-center rounded-xl bg-red-100 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-200 disabled:cursor-not-allowed disabled:opacity-70"
+      className="inline-flex items-center justify-center rounded-xl bg-red-100 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-200 disabled:cursor-not-allowed disabled:opacity-70 dark:bg-red-500/15 dark:text-red-300 dark:hover:bg-red-500/25"
       disabled={isLoading}
     >
       {isLoading ? "Logging out..." : "Logout"}
