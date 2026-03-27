@@ -15,7 +15,7 @@ const getCookieOptions = () => {
 
   return {
     httpOnly: true,
-    secure: isProduction,
+    secure: true,
     sameSite: isProduction ? "none" : "lax",
   };
 };
